@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestão de Doações</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="cabecalho">
+        <div>
+            <h1>Sistema de Gestão de Doações</h1>
+            <p>Projeto Social Ação do Bem</p>
+        </div>
+    </header>
+
+    <nav class="menu">
+        <a href="#inicio">Início</a>
+        <a href="#doacoes">Doações</a>
+        <a href="#estoque">Estoque</a>
+        <a href="#entregas">Entregas</a>
+        <a href="#historico">Histórico</a>
+    </nav>
+
+    <div id="mensagem-sistema" class="mensagem-sistema"></div>
+
+    <main class="container">
+
+        <section id="inicio" class="apresentacao">
+            <h2>Painel inicial</h2>
+
+            <p>
+                Este sistema foi desenvolvido para apoiar o Projeto Social Ação do Bem
+                na organização das doações recebidas, no controle do estoque e no
+                registro das entregas realizadas.
+            </p>
+        </section>
+
+        <section class="resumo">
+            <div class="card-resumo">
+                <h3>Doações recebidas</h3>
+                <p id="total-doacoes">0</p>
+            </div>
+
+            <div class="card-resumo">
+                <h3>Itens em estoque</h3>
+                <p id="total-estoque">0</p>
+            </div>
+
+            <div class="card-resumo">
+                <h3>Entregas realizadas</h3>
+                <p id="total-entregas">0</p>
+            </div>
+
+            <div class="card-resumo">
+                <h3>Famílias atendidas</h3>
+                <p id="total-familias">0</p>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Objetivo do sistema</h2>
+
+            <ul>
+                <li>Registrar as doações recebidas pela comunidade.</li>
+                <li>Consultar os itens disponíveis em estoque.</li>
+                <li>Registrar as entregas realizadas às famílias atendidas.</li>
+                <li>Manter um histórico simples das movimentações.</li>
+            </ul>
+        </section>
+
+        <section class="card aviso">
+            <h2>Observação sobre o MVP</h2>
+
+            <p>
+                Este sistema é um protótipo funcional local. Os dados ficam salvos apenas no navegador
+                utilizado para a demonstração, sem exposição pública de informações.
+            </p>
+
+            <p>
+                Para preservar a privacidade, recomenda-se utilizar identificações simples,
+                como "Família 01" ou "Beneficiário 01", sem cadastrar documentos pessoais.
+            </p>
+        </section>
+
+        <section id="doacoes" class="card">
+            <h2>Cadastro de doações recebidas</h2>
+
+            <p class="texto-apoio">
+                Utilize este formulário para registrar os itens recebidos pelo Projeto Social Ação do Bem.
+            </p>
+
+            <form id="form-doacao" class="formulario">
+                <div class="grupo-formulario">
+                    <label for="data">Data da doação</label>
+                    <input type="date" id="data" required>
+                </div>
+
+                <div class="grupo-formulario">
+                    <label for="tipo">Tipo de item</label>
+                    <select id="tipo" required>
+                        <option value="">Selecione</option>
+                        <option value="Alimento">Alimento</option>
+                        <option value="Roupa">Roupa</option>
+                        <option value="Brinquedo">Brinquedo</option>
+                        <option value="Higiene">Higiene</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+
+                <div class="grupo-formulario">
+                    <label for="item">Item recebido</label>
+                    <input type="text" id="item" placeholder="Ex: arroz, feijão, camiseta" required>
+                </div>
+
+                <div class="grupo-formulario">
+                    <label for="quantidade">Quantidade</label>
+                    <input type="number" id="quantidade" min="1" placeholder="Ex: 5" required>
+                </div>
+
+                <div class="grupo-formulario">
+                    <label for="unidade">Unidade de medida</label>
+                    <select id="unidade" required>
+                        <option value="">Selecione</option>
+                        <option value="Un.">Unidade</option>
+                        <option value="Kg">Kg</option>
+                        <option value="Pacote(s)">Pacote</option>
+                        <option value="Peça(s)">Peça</option>
+                        <option value="Cesta(s)">Cesta</option>
+                        <option value="Caixa(s)">Caixa</option>
+                        <option value="Litro(s)">Litro</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+
+                <div class="grupo-formulario">
+                    <label for="origem">Origem da doação</label>
+                    <input type="text" id="origem" placeholder="Ex: condomínio, academia, doador anônimo">
+                </div>
+
+                <div class="grupo-formulario grupo-observacao">
+                    <label for="observacao">Observação</label>
+                    <textarea id="observacao" rows="3" placeholder="Informação adicional sobre a doação"></textarea>
+                </div>
+
+                <button type="submit" class="botao">Cadastrar doação</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Doações cadastradas</h2>
+
+            <div class="tabela-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Tipo</th>
+                            <th>Item</th>
+                            <th>Quantidade</th>
+                            <th>Unidade</th>
+                            <th>Origem</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="lista-doacoes">
+                        <tr>
+                            <td colspan="6" class="mensagem-vazia">
+                                Nenhuma doação cadastrada até o momento.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="estoque" class="card">
+            <h2>Controle de estoque</h2>
+
+            <p class="texto-apoio">
+                Nesta área são exibidos os itens disponíveis, calculados a partir das doações cadastradas
+                e das entregas realizadas.
+            </p>
+
+            <div class="tabela-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Item</th>
+                            <th>Quantidade disponível</th>
+                            <th>Unidade</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="lista-estoque">
+                        <tr>
+                            <td colspan="4" class="mensagem-vazia">
+                                Nenhum item disponível em estoque.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="entregas" class="card">
+            <h2>Registro de entregas</h2>
+
+            <p class="texto-apoio">
+                Utilize este formulário para registrar os itens entregues às famílias atendidas.
+            </p>
+
+            <form id="form-entrega" class="formulario">
+                <div class="grupo-formulario">
+                    <label for="data-entrega">Data da entrega</label>
+                    <input type="date" id="data-entrega" required>
+                </div>
+
+                <div class="grupo-formulario">
+                    <label for="item-entrega">Item entregue</label>
+                    <select id="item-entrega" required>
+                        <option value="">Selecione um item do estoque</option>
+                    </select>
+                </div>
+
+                <div class="grupo-formulario">
+                    <label for="quantidade-entrega">Quantidade entregue</label>
+                    <input type="number" id="quantidade-entrega" min="1" placeholder="Ex: 2" required>
+                </div>
+
+                <div class="grupo-formulario">
+                    <label for="familia">Família atendida</label>
+                    <input type="text" id="familia" placeholder="Ex: Família 01" required>
+                </div>
+
+                <div class="grupo-formulario grupo-observacao">
+                    <label for="observacao-entrega">Observação</label>
+                    <textarea id="observacao-entrega" rows="3" placeholder="Informação adicional sobre a entrega"></textarea>
+                </div>
+
+                <button type="submit" class="botao">Registrar entrega</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Entregas cadastradas</h2>
+
+            <div class="tabela-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Família</th>
+                            <th>Tipo</th>
+                            <th>Item</th>
+                            <th>Quantidade</th>
+                            <th>Unidade</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="lista-entregas">
+                        <tr>
+                            <td colspan="6" class="mensagem-vazia">
+                                Nenhuma entrega cadastrada até o momento.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="historico" class="card">
+            <h2>Histórico de movimentações</h2>
+
+            <p class="texto-apoio">
+                Esta área reúne as entradas de doações e as saídas realizadas nas entregas.
+            </p>
+
+            <div class="tabela-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Movimentação</th>
+                            <th>Tipo</th>
+                            <th>Item</th>
+                            <th>Quantidade</th>
+                            <th>Unidade</th>
+                            <th>Origem/Destino</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="lista-historico">
+                        <tr>
+                            <td colspan="7" class="mensagem-vazia">
+                                Nenhuma movimentação registrada até o momento.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card area-limpeza">
+            <h2>Dados de demonstração</h2>
+
+            <p class="texto-apoio">
+                Use esta opção apenas para limpar os dados cadastrados durante testes ou demonstrações do sistema.
+            </p>
+
+            <button id="botao-limpar" class="botao-secundario">
+                Limpar dados de teste
+            </button>
+        </section>
+
+    </main>
+
+    <footer class="rodape">
+        <p>Sistema de Gestão de Doações — Projeto Social Ação do Bem</p>
+        <p>MVP desenvolvido para fins acadêmicos e de validação inicial.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

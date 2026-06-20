@@ -1,0 +1,347 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+}
+
+.cabecalho {
+    background-color: #1f2550;
+    color: white;
+    text-align: center;
+    padding: 28px 20px;
+}
+
+.cabecalho h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.cabecalho p {
+    color: #35d889;
+    font-weight: bold;
+}
+
+.menu {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    padding: 14px 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #1f2550;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.menu a:hover {
+    color: #35a96c;
+}
+
+#inicio,
+#doacoes,
+#estoque,
+#entregas,
+#historico {
+    scroll-margin-top: 55px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px 120px 20px;
+}
+
+.apresentacao {
+    background-color: white;
+    padding: 26px;
+    border-radius: 8px;
+    margin-bottom: 22px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+}
+
+.apresentacao h2 {
+    color: #1f2550;
+    margin-bottom: 12px;
+}
+
+.apresentacao p {
+    line-height: 1.6;
+}
+
+.resumo {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.card-resumo {
+    background-color: white;
+    padding: 22px;
+    border-radius: 8px;
+    text-align: center;
+    border-top: 4px solid #35d889;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+}
+
+.card-resumo h3 {
+    color: #1f2550;
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.card-resumo p {
+    font-size: 30px;
+    font-weight: bold;
+    color: #35a96c;
+}
+
+.card {
+    background-color: white;
+    padding: 26px;
+    border-radius: 8px;
+    margin-bottom: 22px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+}
+
+.card h2 {
+    color: #1f2550;
+    margin-bottom: 15px;
+}
+
+.card ul {
+    padding-left: 22px;
+}
+
+.card li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.aviso {
+    border-left: 5px solid #35d889;
+}
+
+.texto-apoio {
+    margin-bottom: 18px;
+    line-height: 1.5;
+    color: #555;
+}
+
+.formulario {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.grupo-formulario {
+    display: flex;
+    flex-direction: column;
+}
+
+.grupo-formulario label {
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #1f2550;
+}
+
+.grupo-formulario input,
+.grupo-formulario select,
+.grupo-formulario textarea {
+    padding: 11px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.grupo-formulario input:focus,
+.grupo-formulario select:focus,
+.grupo-formulario textarea:focus {
+    outline: none;
+    border-color: #35d889;
+}
+
+.grupo-observacao {
+    grid-column: span 2;
+}
+
+.botao {
+    grid-column: span 2;
+    background-color: #1f2550;
+    color: white;
+    border: none;
+    padding: 13px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.botao:hover {
+    background-color: #35a96c;
+}
+
+.botao-secundario {
+    background-color: #7a2e2e;
+    color: white;
+    border: none;
+    padding: 13px 18px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.botao-secundario:hover {
+    background-color: #9d3a3a;
+}
+
+.area-limpeza {
+    border-left: 5px solid #7a2e2e;
+}
+
+.mensagem-sistema {
+    display: none;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    max-width: 360px;
+    padding: 14px 18px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
+}
+
+.mensagem-sistema.visivel {
+    display: block;
+}
+
+.mensagem-sistema.sucesso {
+    background-color: #1f8f4d;
+}
+
+.mensagem-sistema.erro {
+    background-color: #b23b3b;
+}
+
+.mensagem-sistema.aviso-mensagem {
+    background-color: #1f2550;
+}
+
+.tabela-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+}
+
+thead {
+    background-color: #1f2550;
+    color: white;
+}
+
+th,
+td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-size: 14px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f7f7f7;
+}
+
+.mensagem-vazia {
+    text-align: center;
+    color: #777;
+    padding: 18px;
+}
+
+.entrada {
+    color: #1f8f4d;
+    font-weight: bold;
+}
+
+.saida {
+    color: #b23b3b;
+    font-weight: bold;
+}
+
+.rodape {
+    background-color: #1f2550;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.rodape p {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.rodape p:last-child {
+    color: #35d889;
+    font-weight: bold;
+}
+
+@media (max-width: 800px) {
+    .resumo {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .menu {
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+
+    .formulario {
+        grid-template-columns: 1fr;
+    }
+
+    .grupo-observacao,
+    .botao {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 500px) {
+    .resumo {
+        grid-template-columns: 1fr;
+    }
+
+    .cabecalho h1 {
+        font-size: 23px;
+    }
+
+    .mensagem-sistema {
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        max-width: none;
+    }
+}
